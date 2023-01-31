@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 /// <summary>
-/// technically we don't need this but to demonstrate the capability of observer pattern and to encourage everyone to do something similar instead of singletons!
-/// Act as middle manager to send data from one sender to multiple receivers.
+/// technically we don't need this but to demonstrate the capability of observer pattern and to encourage everyone to do something similar instead of singletons! 
+/// Act as middle manager to send data from one sender to multiple receivers, This will be a simplified version of it. To have something like passing variables to the listeners, create your own delegates.
 /// Do always remember to unsubscribe at "Void OnDisable()" whenever you subscribe from another object!
 /// </summary>
 public class ObserverSystem : MonoBehaviour
@@ -13,18 +13,6 @@ public class ObserverSystem : MonoBehaviour
     /// This is the subscriber's base
     /// </summary>
     private Dictionary<string, UnityEvent> m_AllSubscribers = new Dictionary<string, UnityEvent>();
-    /// <summary>
-    /// This is where all the message will be at! Basically, <MessageName, stored variable>
-    /// </summary>
-    private Dictionary<string, object> m_NameStoredMessage = new Dictionary<string, object>();
-    /// <summary>
-    /// This is to remove the event and variable name!
-    /// </summary>
-    private string m_ToRemoveTheEventVariable;
-    /// <summary>
-    /// in order to keep track of updating the coroutine
-    /// </summary>
-    Coroutine m_RemoveVariableCoroutine;
 
     public static ObserverSystem Instance
     {
@@ -55,30 +43,6 @@ public class ObserverSystem : MonoBehaviour
             DontDestroyOnLoad(this);
             instance = this;
         }
-    }
-    /// <summary>
-    /// to disable coroutine
-    /// </summary>
-    private void OnDisable()
-    {
-        if (m_RemoveVariableCoroutine != null)
-        {
-            StopCoroutine(m_RemoveVariableCoroutine);
-            m_RemoveVariableCoroutine = null;
-        }
-    }
-
-    /// <summary>
-    /// The coroutine to remove the event variable for the next frame.
-    /// </summary>
-    /// <returns></returns>
-    protected IEnumerator removeVariableRoutine()
-    {
-        yield return null;
-        m_NameStoredMessage.Remove(m_ToRemoveTheEventVariable);
-        m_ToRemoveTheEventVariable = null;
-        m_RemoveVariableCoroutine = null;
-        yield break;
     }
 
     /// <summary>
@@ -123,71 +87,5 @@ public class ObserverSystem : MonoBehaviour
         {
             theEvent.Invoke();
         }
-    }
-
-    /// <summary>
-    /// Remove the variable from the event!
-    /// </summary>
-    /// <param name="eventName">The event's name</param>
-    public void RemoveStoredVariable(string eventName)
-    {
-        m_NameStoredMessage.Remove(eventName);
-    }
-
-    /// <summary>
-    /// To store a variable in the event so that everyone can receive it easily!
-    /// </summary>
-    /// <param name="eventName"></param>
-    /// <param name="storedVari"></param>
-    /// <returns></returns>
-    public bool StoreVariableInEvent(string eventName, object storedVari)
-    {
-        if (m_NameStoredMessage.ContainsKey(eventName))
-        {
-            m_NameStoredMessage.Remove(eventName);
-        }
-        m_NameStoredMessage.Add(eventName, storedVari);
-        return true;
-    }
-
-    /// <summary>
-    /// This is to ensure that all variable can receive the stored variable from the event before it is removed in the next frame.
-    /// </summary>
-    /// <param name="eventName">The event name to remove the stored variable!</param>
-    /// <returns></returns>
-    public bool RemoveTheEventVariableNextFrame(string eventName)
-    {
-        if (m_ToRemoveTheEventVariable != null)
-        {
-            m_ToRemoveTheEventVariable = eventName;
-            m_RemoveVariableCoroutine = StartCoroutine(removeVariableRoutine());
-            return true;
-        }
-        return false;
-    }
-
-    /// <summary>
-    /// To access the stored variable!
-    /// </summary>
-    /// <param name="eventName">The event name</param>
-    /// <returns>returns null if no variable can be found!</returns>
-    public object GetStoredEventVariable(string eventName)
-    {
-        object storedVariable;
-        m_NameStoredMessage.TryGetValue(eventName, out storedVariable);
-        return storedVariable;
-    }
-
-    public T GetStoredEventVariable<T>(string eventName)
-    {
-        return (T)GetStoredEventVariable(eventName);
-    }
-
-    /// <summary>
-    /// This will remove all the event variables from the event
-    /// </summary>
-    public void RemoveAllEventVariable()
-    {
-        m_NameStoredMessage.Clear();
     }
 }
