@@ -21,7 +21,6 @@ public class MapHandler : MonoBehaviour
     /// </summary>
     private void OnDrawGizmos()
     {
-        // based on the gizmos
         for (float x = m_GridRange.x; x >= -m_GridRange.x; x -= m_GizmosGridSize.x)
         {
             for (float y = m_GridRange.y; y >= -m_GridRange.y; y -= m_GizmosGridSize.y)
