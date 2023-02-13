@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class VehicleSpawn : MonoBehaviour
 {
-    [SerializeField] private GameObject vehicle;
+    [SerializeField] private GameObject[] vehicle;
     [SerializeField] private Transform spawnPos;
     [SerializeField] private float minTime;
     [SerializeField] private float maxTime;
@@ -20,8 +20,9 @@ public class VehicleSpawn : MonoBehaviour
         while(true)
         {
             yield return new WaitForSeconds(Random.Range(minTime, maxTime));
+            int car_num = Random.Range(0, vehicle.Length);
             // GameObject start = Instantiate(vehicle, spawnPos.position, Quaternion.identity);
-            GameObject start = Instantiate(vehicle, spawnPos.position, Quaternion.Euler (0, 90, 0));
+            GameObject start = Instantiate(vehicle[car_num], spawnPos.position, Quaternion.Euler (0, 90, 0));
             if(isRight)
                 start.transform.Rotate(new Vector3(0,180,0));
         }
