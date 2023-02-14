@@ -26,6 +26,7 @@ public class PlayerCollision : MonoBehaviour
             trig.gameObject.SetActive(false);
             
             //Do score update here
+            ScoreManager.instance.AddPoints();
         }
     }
 }
