@@ -8,8 +8,8 @@ public class PlayerCollision : MonoBehaviour
 
     private void OnCollisionEnter(Collision col)
     {
-        Debug.Log(col.gameObject.transform.parent.gameObject.tag);
-        if (col.gameObject.transform.parent.gameObject.tag == "Vehicles")
+        //Debug.Log(col.gameObject.tag);
+        if (col.gameObject.tag == "Vehicles")
         {
             //Debug.Log(col.gameObject.name);
             // Kill the player

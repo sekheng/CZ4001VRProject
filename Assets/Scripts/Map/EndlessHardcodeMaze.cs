@@ -40,7 +40,7 @@ public class EndlessHardcodeMaze : MonoBehaviour
         Vector3 dir = playerPos - playerTransform.position;
         var firstChild = transform.GetChild(0);
         var firstPathSize = firstChild.GetComponent<PathSize>();
-        if (dir.magnitude > (halfOfGrid+ firstPathSize.gridSize - spawnOffsetGrid) * mapHandler.m_GizmosGridSize.x)
+        if (dir.magnitude > (halfOfGrid+ firstPathSize.gridSize - spawnOffsetGrid) * mapHandler.m_GizmosGridSize.y)
         {
             // then get the current index then move it to the
             firstChild.position += new Vector3(0, 0, totalGrids * mapHandler.m_GizmosGridSize.y);
