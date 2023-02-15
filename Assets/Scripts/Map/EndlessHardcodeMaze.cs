@@ -46,6 +46,11 @@ public class EndlessHardcodeMaze : MonoBehaviour
             firstChild.position += new Vector3(0, 0, totalGrids * mapHandler.m_GizmosGridSize.y);
             // then reassign it to the last
             firstChild.SetAsLastSibling();
+            foreach (Transform child in firstChild.transform)
+            {
+                if (child.tag == "Score Trigger")
+                    child.gameObject.SetActive(true);
+            }
             halfOfGrid += firstPathSize.gridSize;
         }
     }

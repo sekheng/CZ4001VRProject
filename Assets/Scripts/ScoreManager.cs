@@ -47,6 +47,11 @@ public class ScoreManager : MonoBehaviour
         deathText.text = "Deaths: " + deaths.ToString();
     }
 
+    public int GetScore()
+    {
+        return score;
+    }
+
     // Update is called once per frame
     void Update()
     {

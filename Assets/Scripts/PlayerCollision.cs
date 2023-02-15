@@ -29,6 +29,8 @@ public class PlayerCollision : MonoBehaviour
             
             //Do score update here
             ScoreManager.instance.AddPoints();
+
+            Debug.Log(ScoreManager.instance.GetScore());
         }
     }
 }
