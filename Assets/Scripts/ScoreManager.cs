@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class NewBehaviourScript : MonoBehaviour
+public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
 
@@ -43,7 +44,7 @@ public class NewBehaviourScript : MonoBehaviour
     public void AddDeaths()
     {
         deaths += 1;
-        deathText = "Deaths: " + deaths.ToString();
+        deathText.text = "Deaths: " + deaths.ToString();
     }
 
     // Update is called once per frame
