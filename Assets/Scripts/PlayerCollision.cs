@@ -14,7 +14,9 @@ public class PlayerCollision : MonoBehaviour
             //Debug.Log(col.gameObject.name);
             // Kill the player
             player.gameObject.SetActive(false);
+
             //Do death update here
+            ScoreManager.instance.AddDeaths(); //Add to death counter
         }
     }
 
@@ -26,6 +28,7 @@ public class PlayerCollision : MonoBehaviour
             trig.gameObject.SetActive(false);
             
             //Do score update here
+            ScoreManager.instance.AddPoints();
         }
     }
 }
