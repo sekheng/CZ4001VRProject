@@ -17,9 +17,14 @@ public class RoadWithBackGenerator : MonoBehaviour
 
     public void BuildRoad()
     {
+        // ensure the children gets destroyed
+        while (transform.childCount > 0)
+        {
+            DestroyImmediate(transform.GetChild(0).gameObject);
+        }
         for (int num = 0; num < m_NumOfRoads; num++)
         {
-            Instantiate(m_Prefab, new Vector3(num * m_Prefab.transform.localScale.x * m_OffsetScale, 0, 0), new Quaternion(0, 0.7071068f, 0, 0.7071068f), transform);
+            Instantiate(m_Prefab, new Vector3((num * m_Prefab.transform.localScale.x * m_OffsetScale) + transform.position.x, transform.position.y, transform.position.z), new Quaternion(0, 0.7071068f, 0, 0.7071068f), transform);
         }
         // and then helps me to save the scene
         EditorSceneManager.SaveOpenScenes();
