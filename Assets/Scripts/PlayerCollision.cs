@@ -8,17 +8,21 @@ public class PlayerCollision : MonoBehaviour
 
     private void OnCollisionEnter(Collision col)
     {
-        Debug.Log(col.gameObject.transform.parent.gameObject.tag);
-        if (col.gameObject.transform.parent.gameObject.tag == "Vehicles")
+        //Debug.Log(col.gameObject.tag);
+        if (col.gameObject.tag == "Vehicles")
         {
             //Debug.Log(col.gameObject.name);
             // Kill the player
-            player.gameObject.SetActive(false);
+            //player.gameObject.SetActive(false);
+
+
 
             //Do death update here
             ScoreManager.instance.AddDeaths(); //Add to death counter
+    
         }
     }
+
 
     private void OnTriggerEnter(Collider trig)
     {
@@ -29,6 +33,8 @@ public class PlayerCollision : MonoBehaviour
             
             //Do score update here
             ScoreManager.instance.AddPoints();
+
+            Debug.Log(ScoreManager.instance.GetScore());
         }
     }
 }
