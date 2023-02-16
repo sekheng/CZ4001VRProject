@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -18,7 +19,14 @@ public class ScoreManager : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        if (instance)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            instance = this;
+        }
     }
 
     // Start is called before the first frame update
@@ -39,22 +47,27 @@ public class ScoreManager : MonoBehaviour
         // Update high score
         if (highscore < score)
             PlayerPrefs.SetInt("highscore", score);
-
     }
 
     public void AddDeaths()
     {
         deaths += 1;
         deathText.text = "Deaths: " + deaths.ToString();
+        StartCoroutine(LoadScene());
+
     }
 
     public int GetScore()
     {
         return score;
     }
-
-    // Update is called once per frame
-    void Update()
+    IEnumerator LoadScene()
     {
+        string curMap = SceneManager.GetActiveScene().name;
+        yield return SceneManager.UnloadSceneAsync(curMap, UnloadSceneOptions.None);
+        yield return SceneManager.LoadSceneAsync(curMap, LoadSceneMode.Additive);
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(curMap));
+        // it should be done!
     }
+
 }
