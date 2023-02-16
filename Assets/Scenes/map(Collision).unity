@@ -24411,7 +24411,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1272822328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24425,7 +24425,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_GridRange: {x: 150, y: 200}
-  m_GizmosGridSize: {x: 3, y: 3.75}
+  m_GizmosGridSize: {x: 3, y: 4.5}
 --- !u!4 &1272822329
 Transform:
   m_ObjectHideFlags: 0
