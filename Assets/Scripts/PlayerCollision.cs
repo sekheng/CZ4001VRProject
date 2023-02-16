@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerCollision : MonoBehaviour
 {
@@ -14,6 +15,10 @@ public class PlayerCollision : MonoBehaviour
             //Debug.Log(col.gameObject.name);
             // Kill the player
             player.gameObject.SetActive(false);
+
+            // Reload scene to reset game
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
 
             //Do death update here
             ScoreManager.instance.AddDeaths(); //Add to death counter
