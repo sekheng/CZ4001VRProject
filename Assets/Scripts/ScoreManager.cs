@@ -8,6 +8,8 @@ using UnityEngine.SceneManagement;
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
+    public delegate void FinishedEventDeli();
+    public event FinishedEventDeli FinishEvent;
 
     public TMP_Text scoreText;
     public TMP_Text highscoreText;
@@ -16,6 +18,10 @@ public class ScoreManager : MonoBehaviour
     int score = 0;
     int highscore = 0;
     int deaths = 0;
+
+    Coroutine loadSceneRoutine;
+    // finish unloading scene flag
+    bool isUnloadedScene = true;
 
     private void Awake()
     {
@@ -26,7 +32,13 @@ public class ScoreManager : MonoBehaviour
         else
         {
             instance = this;
+            ObserverSystem.Instance.SubscribeEvent(LoadingTransition.FinishedTweening, FinishLoadingScene);
         }
+    }
+
+    private void OnDestroy()
+    {
+        ObserverSystem.Instance.UnsubscribeEvent(LoadingTransition.FinishedTweening, FinishLoadingScene);
     }
 
     // Start is called before the first frame update
@@ -51,23 +63,47 @@ public class ScoreManager : MonoBehaviour
 
     public void AddDeaths()
     {
-        deaths += 1;
-        deathText.text = "Deaths: " + deaths.ToString();
-        StartCoroutine(LoadScene());
-
+        if (loadSceneRoutine == null)
+        {
+            deaths += 1;
+            deathText.text = "Deaths: " + deaths.ToString();
+            loadSceneRoutine = StartCoroutine(LoadScene());
+        }
     }
 
     public int GetScore()
     {
         return score;
     }
+
+    void FinishLoadingScene()
+    {
+        isUnloadedScene = true;
+    }
+
     IEnumerator LoadScene()
     {
+        string deathSceneName = "Died";
+        isUnloadedScene = false;
+        // load the death scenes first!
+        yield return SceneManager.LoadSceneAsync(deathSceneName, LoadSceneMode.Additive);
         string curMap = SceneManager.GetActiveScene().name;
+        while (isUnloadedScene == false)
+        {
+            yield return null;
+        }
         yield return SceneManager.UnloadSceneAsync(curMap, UnloadSceneOptions.None);
         yield return SceneManager.LoadSceneAsync(curMap, LoadSceneMode.Additive);
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(curMap));
+        isUnloadedScene = false;
         // it should be done!
+        FinishEvent?.Invoke();
+        while (isUnloadedScene == false)
+        {
+            yield return null;
+        }
+        yield return SceneManager.UnloadSceneAsync(deathSceneName, UnloadSceneOptions.None);
+        loadSceneRoutine = null;
     }
 
 }
