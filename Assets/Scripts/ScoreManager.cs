@@ -33,8 +33,8 @@ public class ScoreManager : MonoBehaviour
     void Start()
     {
         highscore = PlayerPrefs.GetInt("highscore", 0);
-        scoreText.text = "Current score: " + score.ToString();
-        highscoreText.text = "High score: " + highscore.ToString();
+        highscoreText.text = "High Score: " + highscore.ToString();
+        scoreText.text = "Current Score: " + score.ToString();
         deathText.text = "Deaths: " + deaths.ToString();
     }
 
