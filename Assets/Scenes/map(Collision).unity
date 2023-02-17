@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.07040366, g: 0.35354507, b: 0.9699244, a: 1}
+  m_IndirectSpecularColor: {r: 0.07061059, g: 0.35376522, b: 0.97078264, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -123,6 +123,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &1786422
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1786423}
+  m_Layer: 0
+  m_Name: Forward Direction
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1786423
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1786422}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.051, y: 0, z: 0.767}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1759460179}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3854977
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1833,6 +1864,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 7139295897153325462, guid: bfdde8f8b34b3924d87b217ddf34e07d, type: 3}
   m_PrefabInstance: {fileID: 68092329}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &73726649 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1852140872, guid: 3d77378c7e66190488e23a65740d6515, type: 3}
+  m_PrefabInstance: {fileID: 409951964}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &74210793
 PrefabInstance:
@@ -8319,7 +8355,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8255545362103463990, guid: 3d77378c7e66190488e23a65740d6515, type: 3}
       propertyPath: useVR
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8255545362103463990, guid: 3d77378c7e66190488e23a65740d6515, type: 3}
       propertyPath: m_Enabled
@@ -33784,6 +33820,16 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7139295897153325462, guid: bfdde8f8b34b3924d87b217ddf34e07d, type: 3}
   m_PrefabInstance: {fileID: 1757695238}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1759460178 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1852240400, guid: 3d77378c7e66190488e23a65740d6515, type: 3}
+  m_PrefabInstance: {fileID: 409951964}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1759460179 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1851888606, guid: 3d77378c7e66190488e23a65740d6515, type: 3}
+  m_PrefabInstance: {fileID: 409951964}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1763333286
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38180,6 +38226,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4343573944652970929, guid: cd7a82f24d09ed04a9513fef2e99ed69, type: 3}
   m_PrefabInstance: {fileID: 1996858682}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1997382189 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1852124538, guid: 3d77378c7e66190488e23a65740d6515, type: 3}
+  m_PrefabInstance: {fileID: 409951964}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1999723529
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40866,6 +40917,30 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.4368038, y: 1.7, z: 0.3743234}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2123808342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2123808332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1bca651354cc38479c9ffed33bb27e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LeftHand: {fileID: 1997382189}
+  RightHand: {fileID: 73726649}
+  MainCamera: {fileID: 1759460178}
+  ForwardDirection: {fileID: 1786422}
+  PositionPreviousFrameLeftHand: {x: 0, y: 0, z: 0}
+  PositionPreviousFrameRightHand: {x: 0, y: 0, z: 0}
+  PlayerPositionPreviousFrame: {x: 0, y: 0, z: 0}
+  PlayerPositionCurrentFrame: {x: 0, y: 0, z: 0}
+  PositionCurrentFrameLeftHand: {x: 0, y: 0, z: 0}
+  PositionCurrentFrameRightHand: {x: 0, y: 0, z: 0}
+  Speed: 150
+  HandSpeed: 0
 --- !u!1001 &2123840613
 PrefabInstance:
   m_ObjectHideFlags: 0
