@@ -65,6 +65,7 @@ public class ScoreManager : MonoBehaviour
     {
         if (loadSceneRoutine == null)
         {
+            score = 0;
             deaths += 1;
             deathText.text = "Deaths: " + deaths.ToString();
             loadSceneRoutine = StartCoroutine(LoadScene());
