@@ -8203,7 +8203,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8255545362103463990, guid: 3d77378c7e66190488e23a65740d6515, type: 3}
       propertyPath: useVR
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8255545362103463991, guid: 3d77378c7e66190488e23a65740d6515, type: 3}
       propertyPath: m_RootOrder

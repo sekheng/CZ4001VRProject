@@ -16,7 +16,7 @@ public class Vehicle : MonoBehaviour
         final_speed = speed + (float)ScoreManager.instance.GetScore();
         distance += final_speed * Time.deltaTime;
         transform.Translate(Vector3.forward * final_speed * Time.deltaTime);
-        if(distance>100 || transform.position.y < 0.0)
+        if(distance > 120 || transform.position.y < 0.0)
         {
             Destroy(gameObject);
         }
