@@ -6,26 +6,18 @@ using UnityEngine.SceneManagement;
 /// <summary>
 /// mainly to load the scenes
 /// </summary>
-public class GameSceneLoader : MonoBehaviour
+public class GameSequence : MonoBehaviour
 {
-    [SerializeField, Tooltip("List of side scenes to be loaded at Awake")]
-    List<string> sceneNames = new List<string>();
-    [SerializeField, Tooltip("Main Game Scene to load at Awake")]
-    string main_game_scene;
-    [SerializeField, Tooltip("Main Game Scene to load at Awake")]
-    GameObject main_camera;
+    [SerializeField, Tooltip("Death Scene to load upon death")]
+    string death_scene;
+    [SerializeField, Tooltip("Player")]
+    GameObject player;
+    [SerializeField, Tooltip("Canvas")]
+    GameObject canvas;
 
     Coroutine loadSceneRoutine;
 
-    /// <summary>
-    /// load the scenes at awake instead of start
-    /// </summary>
-    private void Awake()
-    {
-
-    }
-
-    IEnumerator LoadScene()
+    /*IEnumerator LoadScene()
     {
         // load the death scenes first!
         var asyncLoadLevel =  SceneManager.LoadSceneAsync(main_game_scene, LoadSceneMode.Additive);
@@ -36,17 +28,22 @@ public class GameSceneLoader : MonoBehaviour
         }
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(main_game_scene));
         loadSceneRoutine = null;
-    }
+    }*/
 
     public void Load_Game()
     {
-        main_camera.SetActive(false);
+        //player.SetActive(false);
+        canvas.SetActive(false);
+
+        Rigidbody rb = player.GetComponent<Rigidbody>();
+        rb.constraints = RigidbodyConstraints.FreezePositionY;
+
         //SceneManager.LoadScene(main_game_scene, LoadSceneMode.Additive);
-        loadSceneRoutine = StartCoroutine(LoadScene());
+        /*loadSceneRoutine = StartCoroutine(LoadScene());
         // we wont be using async so that it will just be loaded immediately!
         foreach (var sceneName in sceneNames)
         {
             SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
-        }
+        }*/
     }
 }
