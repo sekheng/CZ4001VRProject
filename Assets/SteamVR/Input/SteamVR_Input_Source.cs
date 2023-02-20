@@ -26,7 +26,7 @@ namespace Valve.VR
         public static ulong GetHandle(SteamVR_Input_Sources inputSource)
         {
             int index = (int)inputSource;
-            if (index < inputSourceHandlesBySource.Length)
+            if (inputSourceHandlesBySource != null && index < inputSourceHandlesBySource.Length)
                 return inputSourceHandlesBySource[index];
 
             return 0;
