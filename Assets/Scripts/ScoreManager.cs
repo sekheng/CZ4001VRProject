@@ -93,7 +93,11 @@ public class ScoreManager : MonoBehaviour
         {
             yield return null;
         }
-        yield return SceneManager.UnloadSceneAsync(curMap, UnloadSceneOptions.None);
+        var asynOp = SceneManager.UnloadSceneAsync(curMap, UnloadSceneOptions.None);
+        while (asynOp.isDone == false)
+        {
+            yield return null;
+        }
         yield return SceneManager.LoadSceneAsync(curMap, LoadSceneMode.Additive);
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(curMap));
         isUnloadedScene = false;

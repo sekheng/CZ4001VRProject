@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Valve.VR.InteractionSystem;
 
 /// <summary>
 /// mainly to load the scenes
@@ -9,12 +10,16 @@ using UnityEngine.SceneManagement;
 public class GameSequence : MonoBehaviour
 {
     [SerializeField, Tooltip("Player")]
-    GameObject player;
+    Player player;
     [SerializeField, Tooltip("Canvas")]
     GameObject canvas;
 
     public void Start_Game()
     {
+        if (player == null)
+        {
+            player = FindObjectOfType<Player>();
+        }
         //player.SetActive(false);
         canvas.SetActive(false);
 
