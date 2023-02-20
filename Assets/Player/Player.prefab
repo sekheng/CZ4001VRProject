@@ -1201,6 +1201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 7925789958176871580}
+  player_rigidbody: {fileID: 2265197626785780936}
 --- !u!1 &7925789958426606153
 GameObject:
   m_ObjectHideFlags: 0
@@ -2352,6 +2353,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2265197625348812657}
+  player_rigidbody: {fileID: 8267919184640714841}
 --- !u!114 &2265197626128980505
 MonoBehaviour:
   m_ObjectHideFlags: 0

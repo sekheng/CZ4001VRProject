@@ -12,6 +12,8 @@ public class GameSceneLoader : MonoBehaviour
     List<string> sceneNames = new List<string>();
     [SerializeField, Tooltip("Main Game Scene to load at Awake")]
     string main_game_scene;
+    [SerializeField, Tooltip("Main Game Scene to load at Awake")]
+    GameObject main_camera;
 
     Coroutine loadSceneRoutine;
 
@@ -20,13 +22,7 @@ public class GameSceneLoader : MonoBehaviour
     /// </summary>
     private void Awake()
     {
-        //SceneManager.LoadScene(main_game_scene, LoadSceneMode.Additive);
-        loadSceneRoutine = StartCoroutine(LoadScene());
-        // we wont be using async so that it will just be loaded immediately!
-        foreach (var sceneName in sceneNames)
-        {
-            SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
-        }
+
     }
 
     IEnumerator LoadScene()
@@ -40,5 +36,17 @@ public class GameSceneLoader : MonoBehaviour
         }
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(main_game_scene));
         loadSceneRoutine = null;
+    }
+
+    public void Load_Game()
+    {
+        main_camera.SetActive(false);
+        //SceneManager.LoadScene(main_game_scene, LoadSceneMode.Additive);
+        loadSceneRoutine = StartCoroutine(LoadScene());
+        // we wont be using async so that it will just be loaded immediately!
+        foreach (var sceneName in sceneNames)
+        {
+            SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
+        }
     }
 }
