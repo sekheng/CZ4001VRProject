@@ -6,6 +6,7 @@ public class PlayerCollision : MonoBehaviour
 {
     public GameObject player;
     public Rigidbody player_rigidbody;
+    public AudioSource score_trigger_sound;
 
     private void OnCollisionEnter(Collision col)
     {
@@ -32,7 +33,9 @@ public class PlayerCollision : MonoBehaviour
         {
             //Debug.Log(trig.gameObject.name);
             trig.gameObject.SetActive(false);
-            
+
+            score_trigger_sound.Play();
+
             //Do score update here
             ScoreManager.instance.AddPoints();
 

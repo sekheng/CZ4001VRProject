@@ -23,7 +23,7 @@ public class GameSequence : MonoBehaviour
         //player.SetActive(false);
         canvas.SetActive(false);
 
-        player.GetComponent<playerController>().enabled = true;
+        //player.GetComponent<playerController>().enabled = true;
         player.GetComponent<SwingingArmMotion>().enabled = true;
 
         Rigidbody rb = player.GetComponent<Rigidbody>();
