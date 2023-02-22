@@ -7,22 +7,22 @@ public class PlayerCollision : MonoBehaviour
     public GameObject player;
     public Rigidbody player_rigidbody;
     public AudioSource score_trigger_sound;
+    public AudioSource car_collision_sound;
+    bool is_hit = false;
 
     private void OnCollisionEnter(Collision col)
     {
         //Debug.Log(col.gameObject.tag);
-        if (col.gameObject.tag == "Vehicles")
+        if (col.gameObject.tag == "Vehicles" && is_hit == false)
         {
             //Debug.Log(col.gameObject.name);
             // Kill the player
             //player.gameObject.SetActive(false);
+            is_hit = true;
             player_rigidbody.isKinematic = false;
             player_rigidbody.useGravity = true;
             player_rigidbody.AddForce(Vector3.down * 10);
-
-            //Do death update here
-            ScoreManager.instance.AddDeaths(); //Add to death counter
-    
+            StartCoroutine(play_accident_sound()); //Start Coroutine
         }
     }
 
@@ -41,5 +41,15 @@ public class PlayerCollision : MonoBehaviour
 
             Debug.Log(ScoreManager.instance.GetScore());
         }
+    }
+
+    IEnumerator play_accident_sound()
+    {
+        car_collision_sound.Play();
+        //Wait Until Sound has finished playing
+        yield return new WaitUntil(() => car_collision_sound.isPlaying == false);
+        //Do death update here
+        ScoreManager.instance.AddDeaths(); //Add to death counter
+
     }
 }
