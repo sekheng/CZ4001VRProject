@@ -8,6 +8,8 @@ using Valve.VR.Extras;
  public class SteamVRLaserWrapper : MonoBehaviour
  {
     public SteamVR_LaserPointer laserPointer;
+    public Button button;
+    public GameSequence gameSeq;
 
     void Awake()
     {
@@ -21,6 +23,8 @@ using Valve.VR.Extras;
         if (e.target.name == "Start Game")
         {
             Debug.Log("Start Game was clicked");
+            gameSeq.Start_Game();
+
         } else if (e.target.name == "Quit Button")
         {
             Debug.Log("Quit Button was clicked");
