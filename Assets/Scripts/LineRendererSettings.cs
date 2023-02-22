@@ -69,13 +69,13 @@ class LineRendererSettings : MonoBehaviour
     {
         if (btn != null)
         {
-            if (btn.name == "ExitButton")
+            if (btn.name == "Quit Button")
             {
                 Application.Quit();
             }
-            else if (btn.name == "RestartButton")
+            else if (btn.name == "Start Game")
             {
-                SceneManager.LoadScene(("Assets/AssetBundles/scenes/map(Collision)"));
+                btn.onClick.Invoke();
             }
 
         }
