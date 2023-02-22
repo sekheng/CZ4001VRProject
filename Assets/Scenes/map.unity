@@ -5613,7 +5613,7 @@ MonoBehaviour:
   panel: {fileID: 0}
   img: {fileID: 0}
   btn: {fileID: 0}
-  rend: {fileID: 0}
+  rend: {fileID: 249083609}
   layerMask:
     serializedVersion: 2
     m_Bits: 32
