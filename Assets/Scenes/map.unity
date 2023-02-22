@@ -5506,9 +5506,9 @@ LineRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 249083608}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_Enabled: 0
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 0
@@ -5605,7 +5605,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 249083608}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9e7eb6639e9248d4e8dd44af8d897a61, type: 3}
   m_Name: 
@@ -5617,24 +5617,6 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 32
---- !u!114 &249083611
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 249083608}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a2a9c34df4095f47b9ca8f975175f5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Device: 1
-  m_PoseSource: 5
-  m_PoseProviderComponent: {fileID: 0}
-  m_TrackingType: 0
-  m_UpdateType: 0
-  m_UseRelativeTransform: 0
 --- !u!114 &249083615 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2232267355594404047, guid: cfc4bc3d09123794e8f8a123d52bd1b0, type: 3}
@@ -5644,6 +5626,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a5fb0ca93b55ef4b8d54b512b103341, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &249083618 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8498837302395295982, guid: cfc4bc3d09123794e8f8a123d52bd1b0, type: 3}
+  m_PrefabInstance: {fileID: 2265197625134061253}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 249083608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2f511c1adaa1e94ebe7ca97bbcabd17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &253109754
@@ -41244,6 +41237,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4643092757685243962, guid: cfc4bc3d09123794e8f8a123d52bd1b0, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7925789957108737264, guid: cfc4bc3d09123794e8f8a123d52bd1b0, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -41307,6 +41304,18 @@ PrefabInstance:
     - target: {fileID: 8267919184640714841, guid: cfc4bc3d09123794e8f8a123d52bd1b0, type: 3}
       propertyPath: m_Constraints
       value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 8498837302395295982, guid: cfc4bc3d09123794e8f8a123d52bd1b0, type: 3}
+      propertyPath: pose
+      value: 
+      objectReference: {fileID: 249083615}
+    - target: {fileID: 8498837302395295982, guid: cfc4bc3d09123794e8f8a123d52bd1b0, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8498837302395295982, guid: cfc4bc3d09123794e8f8a123d52bd1b0, type: 3}
+      propertyPath: addRigidBody
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cfc4bc3d09123794e8f8a123d52bd1b0, type: 3}
@@ -41836,7 +41845,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5dbc2aa4ae02b04187d06d742159a03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laserPointer: {fileID: 0}
+  laserPointer: {fileID: 249083618}
   button: {fileID: 0}
   gameSeq: {fileID: 0}
 --- !u!1001 &8553564966569773851

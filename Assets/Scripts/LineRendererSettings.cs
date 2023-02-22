@@ -6,6 +6,18 @@ using UnityEngine.UI;
 
 class LineRendererSettings : MonoBehaviour
 {
+
+    private void OnEnable()
+    {
+        Debug.Log("Enabled");
+    }
+
+    private void OnDisable()
+    {
+        Debug.Log("Disabled");
+    }
+
+
     public GameObject panel;
     public Image img;
     public Button btn;
@@ -17,7 +29,7 @@ class LineRendererSettings : MonoBehaviour
     Vector3[] points;
 
     //Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         //get the LineRenderer attached to the gameobject.
         img = panel.GetComponent<Image>();

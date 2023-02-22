@@ -11,6 +11,14 @@ using Valve.VR.Extras;
     public Button button;
     public GameSequence gameSeq;
 
+    private void Start()
+    {
+       if (gameSeq == null)
+        {
+            gameSeq = FindObjectOfType<GameSequence>();
+        }
+    }
+
     void Awake()
     {
         laserPointer.PointerIn += PointerInside;
