@@ -15,6 +15,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Died.unity
     guid: 7e7c2297e3860bb44bec5613c89f1a6a
   m_configObjects:
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: df7e46d2f9354da48b55745dac800545, type: 2}
     Unity.XR.OpenVR.Settings: {fileID: 11400000, guid: aad34057ebefbf044a1ef5929842edb0, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 02e5641134c665d4dbe3e614d604b532, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 6f4fa84e91a1e004ea4656d81c385f01, type: 2}
+    xr.sdk.mock-hmd.settings: {fileID: 11400000, guid: 52c5e13f566023549bd7dc10eabfe4c2, type: 2}
