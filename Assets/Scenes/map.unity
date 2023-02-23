@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.07061059, g: 0.35376522, b: 0.97078264, a: 1}
+  m_IndirectSpecularColor: {r: 0.07040366, g: 0.35354507, b: 0.9699244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -41623,8 +41623,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 345064036265573221, guid: cfc4bc3d09123794e8f8a123d52bd1b0, type: 3}
+      propertyPath: useVR
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 345064037348903688, guid: cfc4bc3d09123794e8f8a123d52bd1b0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8527705729788005210, guid: cfc4bc3d09123794e8f8a123d52bd1b0, type: 3}
+      propertyPath: car_collision_sound
+      value: 
+      objectReference: {fileID: 8527705728220170578}
+    - target: {fileID: 8527705729788005210, guid: cfc4bc3d09123794e8f8a123d52bd1b0, type: 3}
+      propertyPath: score_trigger_sound
+      value: 
+      objectReference: {fileID: 8527705728220170579}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cfc4bc3d09123794e8f8a123d52bd1b0, type: 3}
+--- !u!82 &8527705728220170578 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8146433035870047086, guid: cfc4bc3d09123794e8f8a123d52bd1b0, type: 3}
+  m_PrefabInstance: {fileID: 8527705728220170577}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &8527705728220170579 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2172920604079331215, guid: cfc4bc3d09123794e8f8a123d52bd1b0, type: 3}
+  m_PrefabInstance: {fileID: 8527705728220170577}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8553564966569773851
 PrefabInstance:
   m_ObjectHideFlags: 0

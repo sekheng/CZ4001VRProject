@@ -37,12 +37,12 @@ public class LoadingTransition : MonoBehaviour
 
     void DoneLoadingMainScene()
     {
+        myCam.gameObject.SetActive(false);
         // fade it back to translucent
         tweenAlpha = LeanTween.alpha(diedImage.transform as RectTransform, 0.0f, fadeTime);
         tweenAlpha.setOnComplete(() =>
         {
             ObserverSystem.Instance.TriggerEvent(FinishedTweening);
-            myCam.gameObject.SetActive(false);
         });
     }
 }
