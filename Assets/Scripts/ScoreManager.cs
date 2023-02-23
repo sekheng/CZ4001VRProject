@@ -10,6 +10,8 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager instance;
     public delegate void FinishedEventDeli();
     public event FinishedEventDeli FinishEvent;
+    public delegate void PlayerDiedListener();
+    public event PlayerDiedListener PlayerDiedEvent;
 
     public TMP_Text scoreText;
     public TMP_Text highscoreText;
@@ -65,6 +67,7 @@ public class ScoreManager : MonoBehaviour
     {
         if (loadSceneRoutine == null)
         {
+            PlayerDiedEvent?.Invoke();
             score = 0;
             deaths += 1;
             deathText.text = "Deaths: " + deaths.ToString();
@@ -84,11 +87,12 @@ public class ScoreManager : MonoBehaviour
 
     IEnumerator LoadScene()
     {
-        string deathSceneName = "Died";
+        //string deathSceneName = "Died";
         isUnloadedScene = false;
         // load the death scenes first!
-        yield return SceneManager.LoadSceneAsync(deathSceneName, LoadSceneMode.Additive);
+        //yield return SceneManager.LoadSceneAsync(deathSceneName, LoadSceneMode.Additive);
         string curMap = SceneManager.GetActiveScene().name;
+        //SceneManager.SetActiveScene(SceneManager.GetSceneByName(deathSceneName));
         while (isUnloadedScene == false)
         {
             yield return null;
@@ -107,7 +111,7 @@ public class ScoreManager : MonoBehaviour
         {
             yield return null;
         }
-        yield return SceneManager.UnloadSceneAsync(deathSceneName, UnloadSceneOptions.None);
+        //yield return SceneManager.UnloadSceneAsync(deathSceneName, UnloadSceneOptions.None);
         loadSceneRoutine = null;
     }
 

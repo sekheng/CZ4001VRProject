@@ -35,23 +35,30 @@ public class EndlessHardcodeMaze : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //usually i wont use update if i dont have to, but there is no time
-        // get the vector direction
-        Vector3 dir = playerPos - playerTransform.position;
-        var firstChild = transform.GetChild(0);
-        var firstPathSize = firstChild.GetComponent<PathSize>();
-        if (dir.magnitude > (halfOfGrid+ firstPathSize.gridSize - spawnOffsetGrid) * mapHandler.m_GizmosGridSize.y)
+        if (playerTransform == null)
         {
-            // then get the current index then move it to the
-            firstChild.position += new Vector3(0, 0, totalGrids * mapHandler.m_GizmosGridSize.y);
-            // then reassign it to the last
-            firstChild.SetAsLastSibling();
-            foreach (Transform child in firstChild.transform)
+            playerTransform = FindObjectOfType<PlayerStartPos>().transform;
+        }
+        else
+        {
+            //usually i wont use update if i dont have to, but there is no time
+            // get the vector direction
+            Vector3 dir = playerPos - playerTransform.position;
+            var firstChild = transform.GetChild(0);
+            var firstPathSize = firstChild.GetComponent<PathSize>();
+            if (dir.magnitude > (halfOfGrid + firstPathSize.gridSize - spawnOffsetGrid) * mapHandler.m_GizmosGridSize.y)
             {
-                if (child.tag == "Score Trigger")
-                    child.gameObject.SetActive(true);
+                // then get the current index then move it to the
+                firstChild.position += new Vector3(0, 0, totalGrids * mapHandler.m_GizmosGridSize.y);
+                // then reassign it to the last
+                firstChild.SetAsLastSibling();
+                foreach (Transform child in firstChild.transform)
+                {
+                    if (child.tag == "Score Trigger")
+                        child.gameObject.SetActive(true);
+                }
+                halfOfGrid += firstPathSize.gridSize;
             }
-            halfOfGrid += firstPathSize.gridSize;
         }
     }
 }

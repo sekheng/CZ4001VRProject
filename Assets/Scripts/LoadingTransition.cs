@@ -12,8 +12,6 @@ public class LoadingTransition : MonoBehaviour
     Image diedImage;
     [SerializeField, Tooltip("Time taken to fade in/out")]
     float fadeTime = 0.5f;
-    [SerializeField, Tooltip("camera to make it still visible")]
-    Camera myCam;
     LTDescr tweenAlpha = null;
 
     public const string FinishedTweening = "DONE FADING";
@@ -21,23 +19,27 @@ public class LoadingTransition : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        ScoreManager.instance.FinishEvent += DoneLoadingMainScene;
+        ScoreManager.instance.PlayerDiedEvent+= PlayerDied;
+    }
+
+    void PlayerDied()
+    {
         tweenAlpha = LeanTween.alpha(diedImage.transform as RectTransform, 1.0f, fadeTime);
         tweenAlpha.setOnComplete(() =>
         {
             ObserverSystem.Instance.TriggerEvent(FinishedTweening);
-            myCam.gameObject.SetActive(true);
         });
-        ScoreManager.instance.FinishEvent += DoneLoadingMainScene;
     }
 
     private void OnDestroy()
     {
         ScoreManager.instance.FinishEvent -= DoneLoadingMainScene;
+        ScoreManager.instance.PlayerDiedEvent -= PlayerDied;
     }
 
     void DoneLoadingMainScene()
     {
-        myCam.gameObject.SetActive(false);
         // fade it back to translucent
         tweenAlpha = LeanTween.alpha(diedImage.transform as RectTransform, 0.0f, fadeTime);
         tweenAlpha.setOnComplete(() =>

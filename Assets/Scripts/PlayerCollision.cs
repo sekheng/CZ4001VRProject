@@ -10,6 +10,34 @@ public class PlayerCollision : MonoBehaviour
     public AudioSource car_collision_sound;
     bool is_hit = false;
 
+    Quaternion initialRot;
+    Vector3 playerInitialPos;
+
+    private void OnEnable()
+    {
+        ScoreManager.instance.FinishEvent += FinishSceneLoad;
+    }
+
+    private void OnDisable()
+    {
+        ScoreManager.instance.FinishEvent -= FinishSceneLoad;
+    }
+
+    private void Start()
+    {
+        initialRot= transform.localRotation;
+        playerInitialPos= transform.localPosition;
+    }
+
+    private void FinishSceneLoad()
+    {
+        player_rigidbody.isKinematic= true;
+        player_rigidbody.useGravity = false;
+        transform.localRotation = initialRot;
+        transform.localPosition = playerInitialPos;
+        is_hit = false;
+    }
+
     private void OnCollisionEnter(Collision col)
     {
         //Debug.Log(col.gameObject.tag);
@@ -48,8 +76,6 @@ public class PlayerCollision : MonoBehaviour
         //Wait Until Sound has finished playing
         yield return new WaitUntil(() => car_collision_sound.isPlaying == false);
         //Do death update here
-        player.gameObject.SetActive(false);
         ScoreManager.instance.AddDeaths(); //Add to death counter
-
     }
 }
