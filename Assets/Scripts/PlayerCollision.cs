@@ -16,7 +16,6 @@ public class PlayerCollision : MonoBehaviour
         if (col.gameObject.tag == "Vehicles" && is_hit == false)
         {
             //Debug.Log(col.gameObject.name);
-            // Kill the player
             is_hit = true;
             player_rigidbody.isKinematic = false;
             player_rigidbody.useGravity = true;
@@ -48,6 +47,7 @@ public class PlayerCollision : MonoBehaviour
         //Wait Until Sound has finished playing
         yield return new WaitUntil(() => car_collision_sound.isPlaying == false);
         //Do death update here
+        // Kill the player
         player.gameObject.SetActive(false);
         ScoreManager.instance.AddDeaths(); //Add to death counter
 
