@@ -87,8 +87,9 @@ public class ScoreManager : MonoBehaviour
         string deathSceneName = "Died";
         isUnloadedScene = false;
         // load the death scenes first!
-        yield return SceneManager.LoadSceneAsync(deathSceneName, LoadSceneMode.Additive);
         string curMap = SceneManager.GetActiveScene().name;
+        yield return SceneManager.LoadSceneAsync(deathSceneName, LoadSceneMode.Additive);
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(deathSceneName));
         while (isUnloadedScene == false)
         {
             yield return null;
